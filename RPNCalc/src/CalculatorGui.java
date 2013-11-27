@@ -6,12 +6,6 @@ public class CalculatorGui extends Frame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Operand op;
-    Adder add;
-	Subtracter sub;
-	Multiplier mult;
-	Divider div;
-	ResultPresenter eq;
 	private TextField display;
 
 	public CalculatorGui(Operand op, Adder add, Subtracter sub,
@@ -20,12 +14,6 @@ public class CalculatorGui extends Frame {
 		this.setLayout(null);
 		this.setSize(420, 250);
 		this.setResizable(false);
-		
-		this.op = op;
-		this.add = add;
-		this.mult = mult;
-		this.div = div;
-		this.eq = eq;
 		
 		for(int i = 0; i < 14; i++) {
 			new CalcButton(ButtonInitializer.name[i], new Rectangle(ButtonInitializer.bounds[i][0], ButtonInitializer.bounds[i][1], 50, 30), op, this);
