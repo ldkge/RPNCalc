@@ -1,7 +1,13 @@
+import java.util.Stack;
 
-public class Subtracter implements Operator {
+
+public class Subtracter extends Operator {
+	public Subtracter(Stack<Double> st) {
+		super(st);
+	}
+	
 	public void operate() {
-		Calc.st.push(new Double(-Calc.st.pop() + Calc.st.pop()));
+		st.push(new Double(-st.pop() + st.pop()));
 	}
 
 }

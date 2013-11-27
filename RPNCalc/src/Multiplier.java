@@ -1,6 +1,12 @@
+import java.util.Stack;
 
-public class Multiplier implements Operator {
+
+public class Multiplier extends Operator {
+	public Multiplier(Stack<Double> st) {
+		super(st);
+	}
+	
 	public void operate() {
-		Calc.st.push(new Double(Calc.st.pop() * Calc.st.pop()));
+		st.push(new Double(st.pop() * st.pop()));
 	}
 }

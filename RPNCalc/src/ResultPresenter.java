@@ -1,7 +1,17 @@
+import java.util.Stack;
 
-public class ResultPresenter {
+
+public class ResultPresenter extends Operator {
+	public ResultPresenter(Stack<Double> st) {
+		super(st);
+	}
+		
 	public void operate() {
-		CalculatorGui.display.setText(Calc.st.pop().toString());
+		display.setText(st.pop().toString());
+	}
+	
+	public void setResultPresenter(CalculatorGui cgui) {
+		display = cgui.getDisplay();
 	}
 
 }

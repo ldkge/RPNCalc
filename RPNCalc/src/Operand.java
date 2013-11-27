@@ -1,20 +1,26 @@
+import java.awt.TextField;
+import java.util.Stack;
+
 
 public class Operand {
 	private String val;
+	private Stack<Double> st;
+	private TextField display;
 	
-	public Operand() {
+	public Operand(Stack<Double> st) {
 		val = new String();
+		this.st = st;
 	}
 	
 	public void addDigit(char d) {
 		val += d;
-		CalculatorGui.display.setText(val);
+		display.setText(val);
 	}
 	
 	public void deleteLastDigit() {
 		try {
 			val = val.substring(0, val.length()-1);
-			CalculatorGui.display.setText(val);
+			display.setText(val);
 		}
 		catch(Exception e) {
 			
@@ -22,18 +28,26 @@ public class Operand {
 	}
 	
 	public void complete() {
-		Calc.st.push(new Double(val));
+		st.push(new Double(val));
 		val = ""; 
 	}
 	
 	public void reset() {
 		val = "";
-		Calc.st.empty();
-		CalculatorGui.display.setText(val);
+		st.empty();
+		display.setText(val);
 	}
 	
 	public void set(String val) {
 		this.val = val;
-		CalculatorGui.display.setText(val);
+		display.setText(val);
+	}
+	
+	public void setDisplay(TextField display) {
+		this.display = display;
+	}
+
+	public TextField getDisplay() {
+		return display;
 	}
 }

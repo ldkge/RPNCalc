@@ -1,6 +1,17 @@
+import java.util.*;
 
-public class Adder implements Operator {
+
+public class Adder extends Operator {
+	public Adder(Stack<Double> st) {
+		super(st);
+	}
+	
 	public void operate() {
-		Calc.st.push(new Double(Calc.st.pop() + Calc.st.pop()));
+		try {
+			st.push(new Double(st.pop() + st.pop()));
+		}
+		catch(EmptyStackException e) {
+			st.empty();
+		}
 	}
 }

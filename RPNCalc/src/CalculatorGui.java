@@ -12,7 +12,7 @@ public class CalculatorGui extends Frame {
 	Multiplier mult;
 	Divider div;
 	ResultPresenter eq;
-	public static TextField display;
+	private TextField display;
 
 	public CalculatorGui(Operand op, Adder add, Subtracter sub,
 			Multiplier mult, Divider div, ResultPresenter eq) {
@@ -43,6 +43,10 @@ public class CalculatorGui extends Frame {
 				
 		this.setVisible(true);
 		this.addWindowListener(new CloseWindowAndExit());
+	}
+	
+	public TextField getDisplay() {
+		return display;
 	}
 }
 

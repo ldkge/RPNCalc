@@ -1,9 +1,15 @@
+import java.util.Stack;
 
-public class Divider implements Operator {
+
+public class Divider extends Operator {
+	public Divider(Stack<Double> st) {
+		super(st);
+	}
+	
 	public void operate() {
-		Double b = Calc.st.pop();
-		Double a = Calc.st.pop();
+		Double b = st.pop();
+		Double a = st.pop();
 		
-		Calc.st.push(new Double(a/b));
+		st.push(new Double(a/b));
 	}
 }
