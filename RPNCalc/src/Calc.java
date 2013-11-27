@@ -19,11 +19,13 @@ public class Calc {
 		div = new Divider(st);
 		eq = new ResultPresenter(st);
 		cgui = new CalculatorGui(op, add, sub, mult, div, eq);
+		
 		op.setDisplay(cgui.getDisplay());
 		add.setDisplay(cgui.getDisplay());
 		sub.setDisplay(cgui.getDisplay());
 		mult.setDisplay(cgui.getDisplay());
 		div.setDisplay(cgui.getDisplay());
+		eq.setDisplay(cgui.getDisplay());
 	}
 	
 	public static void main(String[] args) {

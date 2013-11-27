@@ -1,8 +1,10 @@
+import java.awt.Button;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Stack;
 
-
-public class Operand {
+public class Operand implements ActionListener {
 	private String val;
 	private Stack<Double> st;
 	private TextField display;
@@ -47,7 +49,27 @@ public class Operand {
 		this.display = display;
 	}
 
-	public TextField getDisplay() {
-		return display;
+	public void actionPerformed(ActionEvent arg0) {
+		if(isNumber(((Button)arg0.getSource()).getLabel())) {
+			addDigit(((Button)arg0.getSource()).getLabel().toCharArray()[0]);
+		}
+		else {
+			switch(((Button)arg0.getSource()).getLabel().toCharArray()[0]) {
+			case 'D': deleteLastDigit(); break;
+			case 'E': complete(); break;
+			case 'C': reset(); break;
+			case '.': addDigit(((Button)arg0.getSource()).getLabel().toCharArray()[0]); break;
+			}
+		}
+	}
+	
+	private boolean isNumber(String s) {
+		try {
+			Integer.parseInt(s);
+		}
+		catch(NumberFormatException e) {
+			return false;
+		}
+		return true;
 	}
 }

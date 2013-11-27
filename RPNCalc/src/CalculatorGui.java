@@ -21,20 +21,21 @@ public class CalculatorGui extends Frame {
 		this.setSize(420, 250);
 		this.setResizable(false);
 		
-		
 		this.op = op;
 		this.add = add;
 		this.mult = mult;
 		this.div = div;
 		this.eq = eq;
 		
-		for(int i = 0; i < ButtonInitializer.name.length; i++)
-		{
-			Button button = new Button(ButtonInitializer.name[i]);
-			button.addActionListener(new ButtonHandler(this));
-			button.setBounds(ButtonInitializer.bounds[i][0], ButtonInitializer.bounds[i][1], 50, 30);
-			this.add(button);
+		for(int i = 0; i < 14; i++) {
+			new CalcButton(ButtonInitializer.name[i], new Rectangle(ButtonInitializer.bounds[i][0], ButtonInitializer.bounds[i][1], 50, 30), op, this);
 		}
+		
+		new CalcButton(ButtonInitializer.name[14], new Rectangle(ButtonInitializer.bounds[14][0], ButtonInitializer.bounds[14][1], 50, 30), add, this);
+		new CalcButton(ButtonInitializer.name[15], new Rectangle(ButtonInitializer.bounds[15][0], ButtonInitializer.bounds[15][1], 50, 30), sub, this);
+		new CalcButton(ButtonInitializer.name[16], new Rectangle(ButtonInitializer.bounds[16][0], ButtonInitializer.bounds[16][1], 50, 30), mult, this);
+		new CalcButton(ButtonInitializer.name[17], new Rectangle(ButtonInitializer.bounds[17][0], ButtonInitializer.bounds[17][1], 50, 30), div, this);
+		new CalcButton(ButtonInitializer.name[18], new Rectangle(ButtonInitializer.bounds[18][0], ButtonInitializer.bounds[18][1], 50, 30), eq, this);
 		
 		display = new TextField("0",14);
 	    display.setEditable(false);
@@ -56,44 +57,7 @@ class CloseWindowAndExit extends WindowAdapter {
 	}
 }
 
-class ButtonHandler implements ActionListener {
-	CalculatorGui cgui;
-	
-	public ButtonHandler(CalculatorGui cgui) {
-		this.cgui = cgui;
-	}
-	
-	public void actionPerformed(ActionEvent arg0) {
-		if(isNumber(((Button)arg0.getSource()).getLabel())) {
-			cgui.op.addDigit(((Button)arg0.getSource()).getLabel().toCharArray()[0]);
-		}
-		else {
-			switch(((Button)arg0.getSource()).getLabel().toCharArray()[0]) {
-			case 'D': cgui.op.deleteLastDigit(); break;
-			case 'E': cgui.op.complete(); break;
-			case 'C': cgui.op.reset(); break;
-			case '+': cgui.add.operate(); break;
-			case '-': cgui.sub.operate(); break;
-			case '*': cgui.mult.operate(); break;
-			case '/': cgui.div.operate(); break;
-			case '=': cgui.eq.operate(); break;
-			case '.': cgui.op.addDigit(((Button)arg0.getSource()).getLabel().toCharArray()[0]); break;
-			}
-		}
-	}
-	
-	private boolean isNumber(String s) {
-		try {
-			Integer.parseInt(s);
-		}
-		catch(NumberFormatException e) {
-			return false;
-		}
-		return true;
-	}
-}
-
 class ButtonInitializer {
-	public static final String[] name = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Enter", "Del", "C", "+", "-", "*", "/", "=", "."};
-	public static final int[][] bounds = new int[][]{{65, 194}, {65, 156}, {125, 156}, {185, 156}, {65, 118}, {125, 118}, {185, 118}, {65, 80}, {125, 80}, {185,80}, {305, 80}, {185, 194}, {305, 118}, {245, 80}, {245, 118}, {245, 156}, {245, 194}, {305, 156}, {125, 194}};
+	public static final String[] name = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "Enter", "Del", "C", "+", "-", "*", "/", "="};
+	public static final int[][] bounds = new int[][]{{65, 194}, {65, 156}, {125, 156}, {185, 156}, {65, 118}, {125, 118}, {185, 118}, {65, 80}, {125, 80}, {185,80}, {125, 194}, {305, 80}, {185, 194}, {305, 118}, {245, 80}, {245, 118}, {245, 156}, {245, 194}, {305, 156}};
 }

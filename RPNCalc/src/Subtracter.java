@@ -1,6 +1,5 @@
 import java.util.Stack;
 
-
 public class Subtracter extends Operator {
 	public Subtracter(Stack<Double> st) {
 		super(st);

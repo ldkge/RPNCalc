@@ -1,6 +1,5 @@
 import java.util.Stack;
 
-
 public class Divider extends Operator {
 	public Divider(Stack<Double> st) {
 		super(st);
