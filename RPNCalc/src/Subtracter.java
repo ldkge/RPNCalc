@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.*;
 
 public class Subtracter extends Operator {
 	public Subtracter(Stack<Double> st) {
@@ -6,7 +6,12 @@ public class Subtracter extends Operator {
 	}
 	
 	public void operate() {
-		st.push(new Double(-st.pop() + st.pop()));
+		try {
+			st.push(new Double(-st.pop() + st.pop()));
+		}
+		catch(EmptyStackException e) {
+			throw new InvalidArgsException();
+		}
 	}
 
 }

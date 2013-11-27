@@ -10,9 +10,7 @@ public class Adder extends Operator {
 			st.push(new Double(st.pop() + st.pop()));
 		}
 		catch(EmptyStackException e) {
-			st.empty();
-			display.setText("Error");
-			System.out.println(e.toString());
+			throw new InvalidArgsException();
 		}
 	}
 }

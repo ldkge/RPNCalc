@@ -17,7 +17,15 @@ public abstract class Operator implements ActionListener {
 		this.display = display;
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent e) {
-		operate();
+		try {
+			operate();
+		}
+		catch(InvalidArgsException e1) {
+			st.empty();
+			display.setText("Error");
+			System.out.println(e1.getLocalizedMessage());
+		}
 	}
 }

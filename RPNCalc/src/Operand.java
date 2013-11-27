@@ -49,6 +49,7 @@ public class Operand implements ActionListener {
 		this.display = display;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(isNumber(((Button)arg0.getSource()).getLabel())) {
 			addDigit(((Button)arg0.getSource()).getLabel().toCharArray()[0]);
