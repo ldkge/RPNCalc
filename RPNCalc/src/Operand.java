@@ -25,8 +25,16 @@ public class Operand implements ActionListener {
 	}
 	
 	public void complete() {
-		st.push(new Double(display.getText()));
-		display.resetText();
+		try {
+			st.push(new Double(display.getText()));
+		}
+		catch(Exception e) {
+			
+		}
+		finally {
+			display.resetText();
+		}
+		
 		
 	}
 	
