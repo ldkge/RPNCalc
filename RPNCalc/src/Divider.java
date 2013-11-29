@@ -5,18 +5,10 @@ public class Divider extends Operator {
 		super(st);
 	}
 	
-	public void operate() {
-		try {
-			Double b = st.pop();
-			Double a = st.pop();
+	public void operate() throws EmptyStackException, ArithmeticException {
+		Double b = st.pop();
+		Double a = st.pop();
 			
-			st.push(new Double(a/b));
-		}
-		catch(EmptyStackException e) {
-			throw new InvalidArgsException();
-		}
-		catch(ArithmeticException e1) {
-			display.setText("Error");
-		}
+		st.push(new Double(a/b));
 	}
 }

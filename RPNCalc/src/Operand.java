@@ -22,10 +22,10 @@ public class Operand implements ActionListener {
 	public void deleteLastDigit() {
 		try {
 			val = val.substring(0, val.length()-1);
-			display.setText(val);
+			display.setText(val.length() != 0 ? val : "0" );
 		}
 		catch(Exception e) {
-			
+			display.setText("0");
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class Operand implements ActionListener {
 	public void reset() {
 		val = "";
 		st.empty();
-		display.setText(val);
+		display.setText("0");
 	}
 	
 	public void set(String val) {

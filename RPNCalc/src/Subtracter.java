@@ -5,13 +5,8 @@ public class Subtracter extends Operator {
 		super(st);
 	}
 	
-	public void operate() {
-		try {
-			st.push(new Double(-st.pop() + st.pop()));
-		}
-		catch(EmptyStackException e) {
-			throw new InvalidArgsException();
-		}
+	public void operate() throws EmptyStackException {
+		st.push(new Double(-st.pop() + st.pop()));
 	}
 
 }

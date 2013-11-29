@@ -1,3 +1,4 @@
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class Multiplier extends Operator {
@@ -5,7 +6,7 @@ public class Multiplier extends Operator {
 		super(st);
 	}
 	
-	public void operate() {
+	public void operate() throws EmptyStackException {
 		st.push(new Double(st.pop() * st.pop()));
 	}
 }
