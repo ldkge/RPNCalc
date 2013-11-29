@@ -6,7 +6,12 @@ public class ResultPresenter extends Operator {
 	}
 		
 	public void operate() {
-		getDisplay().setText(st.pop().toString());
+		try {
+			getDisplay().setText(st.pop().toString());
+		}
+		catch(Exception e) {
+			
+		}
 	}
 
 }

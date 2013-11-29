@@ -50,7 +50,7 @@ public class Display extends TextField {
 	}
 	
 	public void trimText() {
-		if(isReset()) {
+		if(isReset() && this.getText().compareTo("Error") != 0) {
 			setText(this.getText().substring(0, this.getText().length()-1));
 		}
 		else {
