@@ -6,11 +6,7 @@ public class ResultPresenter extends Operator {
 	}
 		
 	public void operate() {
-		display.setText(st.pop().toString());
-	}
-	
-	public void setResultPresenter(CalculatorGui cgui) {
-		display = cgui.getDisplay();
+		getDisplay().setText(st.pop().toString());
 	}
 
 }

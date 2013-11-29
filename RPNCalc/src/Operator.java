@@ -1,11 +1,10 @@
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
 public abstract class Operator implements ActionListener {
-	public TextField display;
+	private Display display;
 	public Stack<Double> st;
 	
 	public Operator(Stack<Double> st) {
@@ -14,8 +13,12 @@ public abstract class Operator implements ActionListener {
 	
 	public abstract void operate() throws EmptyStackException;
 
-	public void setDisplay(TextField display) {
+	public void setDisplay(Display display) {
 		this.display = display;
+	}
+	
+	public Display getDisplay() {
+		return display;
 	}
 	
 	@Override
@@ -23,11 +26,7 @@ public abstract class Operator implements ActionListener {
 		try {
 			operate();
 		}
-		catch(EmptyStackException e1) {
-			st.empty();
-			display.setText("Error");
-		}
-		catch(ArithmeticException e2) {
+		catch(Exception e1) {
 			st.empty();
 			display.setText("Error");
 		}

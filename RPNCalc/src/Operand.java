@@ -1,51 +1,41 @@
 import java.awt.Button;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
 
 public class Operand implements ActionListener {
-	private String val;
 	private Stack<Double> st;
-	private TextField display;
+	private Display display;
 	
 	public Operand(Stack<Double> st) {
-		val = new String();
 		this.st = st;
 	}
 	
 	public void addDigit(char d) {
-		val += d;
-		display.setText(val);
+		display.appendText(d);
 	}
 	
 	public void deleteLastDigit() {
 		try {
-			val = val.substring(0, val.length()-1);
-			display.setText(val.length() != 0 ? val : "0" );
+			display.trimText();
 		}
 		catch(Exception e) {
-			display.setText("0");
+			display.clearText();
 		}
 	}
 	
 	public void complete() {
-		st.push(new Double(val));
-		val = ""; 
+		st.push(new Double(display.getText()));
+		display.resetText();
+		
 	}
 	
 	public void reset() {
-		val = "";
 		st.empty();
-		display.setText("0");
+		display.clearText();
 	}
 	
-	public void set(String val) {
-		this.val = val;
-		display.setText(val);
-	}
-	
-	public void setDisplay(TextField display) {
+	public void setDisplay(Display display) {
 		this.display = display;
 	}
 
