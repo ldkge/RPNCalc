@@ -10,28 +10,28 @@ public class Display extends TextField {
 	private Boolean reset;
 
 	public Display() throws HeadlessException {
-		reset = new Boolean(true);
+		reset = new Boolean(false);
 	}
 
 	public Display(String text) throws HeadlessException {
 		super(text);
-		reset = new Boolean(true);
+		reset = new Boolean(false);
 	}
 
 	public Display(int columns) throws HeadlessException {
 		super(columns);
-		reset = new Boolean(true);
+		reset = new Boolean(false);
 	}
 
 	public Display(String text, int columns) throws HeadlessException {
 		super(text, columns);
-		reset = new Boolean(true);
+		reset = new Boolean(false);
 	}
 	
 	public void appendText(char c) {
 		String val = this.getText();
 		
-		if(isReset() && val.compareTo("0") != 0 && val.compareTo("Error") != 0) {
+		if(!isReset() && ((val.compareTo("0") == 0 && c == '.') || val.compareTo("0") != 0) && val.compareTo("Error") != 0) {
 			setText(val + c);
 		}
 		else {
@@ -41,7 +41,7 @@ public class Display extends TextField {
 	
 	@Override
 	public void setText(String t) {
-		if(this.getText().length() == 0) {
+		if(t.length() == 0) {
 			super.setText("0");
 		}
 		else {
@@ -50,7 +50,7 @@ public class Display extends TextField {
 	}
 	
 	public void trimText() {
-		if(isReset() && this.getText().compareTo("Error") != 0) {
+		if(!isReset() && this.getText().compareTo("Error") != 0) {
 			setText(this.getText().substring(0, this.getText().length()-1));
 		}
 		else {
@@ -59,11 +59,11 @@ public class Display extends TextField {
 	}
 	
 	public void resetText() {
-		reset = false;
+		reset = true;
 	}
 	
 	private Boolean isReset() {
-		return reset == false ? !(reset = !reset) : true;
+		return reset == true ? !(reset = !reset) : false;
 	}
 	
 	public void clearText() {
