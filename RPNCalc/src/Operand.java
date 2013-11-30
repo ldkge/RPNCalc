@@ -20,7 +20,7 @@ public class Operand implements ActionListener {
 			display.trimText();
 		}
 		catch(Exception e) {
-			display.clearText();
+			
 		}
 	}
 	
